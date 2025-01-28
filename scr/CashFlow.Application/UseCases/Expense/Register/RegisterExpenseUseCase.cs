@@ -28,10 +28,10 @@ public class RegisterExpenseUseCase
         var isFutureDate = DateTime.Compare(request.DateTransaction, DateTime.UtcNow);
         if (isFutureDate > 0)
         {
-            throw new ArgumentException("The expense must be in the past."
+            throw new ArgumentException("The expense must be in the past.");
         }
 
-        var isValidPaymentType Enum.IsDefined(typeof(PaymentType), request.PaymentType);
+        var isValidPaymentType = Enum.IsDefined(typeof(PaymentType), request.PaymentType);
         if (isValidPaymentType == false) 
         {
             throw new ArgumentException("Payment Type does not exist.");
