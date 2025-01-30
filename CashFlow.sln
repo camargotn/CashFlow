@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Exception", "scr\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Domain", "scr\CashFlow.Domain\CashFlow.Domain.csproj", "{F659764F-3F2C-4AD9-82A6-BE9ED5A1AEBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator.Tests", "tests\Validator.Tests\Validator.Tests.csproj", "{CF053F62-9424-474C-80BF-A28A160F90C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{F659764F-3F2C-4AD9-82A6-BE9ED5A1AEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F659764F-3F2C-4AD9-82A6-BE9ED5A1AEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F659764F-3F2C-4AD9-82A6-BE9ED5A1AEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF053F62-9424-474C-80BF-A28A160F90C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF053F62-9424-474C-80BF-A28A160F90C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF053F62-9424-474C-80BF-A28A160F90C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF053F62-9424-474C-80BF-A28A160F90C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{DE134540-05F9-4E77-9AD5-CE2325DC53DE} = {8BD37F25-3B15-485B-9963-21E4465D7726}
 		{6D4306B1-4F26-434F-A801-C1E4AEE6FAE7} = {8BD37F25-3B15-485B-9963-21E4465D7726}
 		{F659764F-3F2C-4AD9-82A6-BE9ED5A1AEBF} = {8BD37F25-3B15-485B-9963-21E4465D7726}
+		{CF053F62-9424-474C-80BF-A28A160F90C6} = {82FA82C8-DDF3-4DF1-B740-5D791A55C28A}
 	EndGlobalSection
 EndGlobal
