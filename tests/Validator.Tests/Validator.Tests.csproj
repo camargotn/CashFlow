@@ -11,7 +11,9 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="FluentAssertions" Version="[7.1.0]" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="Shouldly" Version="4.3.0" />
     <PackageReference Include="xunit" Version="2.5.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
@@ -19,6 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\scr\CashFlow.Application\CashFlow.Application.csproj" />
     <ProjectReference Include="..\..\scr\CashFlow.Communication\CashFlow.Communication.csproj" />
+    <ProjectReference Include="..\..\scr\CashFlow.Exception\CashFlow.Exception.csproj" />
+    <ProjectReference Include="..\CommonTestsUtilities\CommonTestsUtilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
