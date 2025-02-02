@@ -10,6 +10,15 @@ public class RegisterExpenseUseCase
     {
         Validate(request);
 
+        var entity = new ExpenseEntity
+        {
+            Title = request.Title,
+            Description = request.Description,
+            DateTransaction = request.DateTransaction,
+            Value = request.Value,
+            PaymentType = request.PaymentType
+        };
+
         return new ResponseRegisterExpensiveJson();
     }
 
