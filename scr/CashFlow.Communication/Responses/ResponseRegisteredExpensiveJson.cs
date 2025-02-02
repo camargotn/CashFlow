@@ -1,5 +1,5 @@
 ﻿namespace CashFlow.Communication.Responses;
-public class ResponseRegisterExpensiveJson
+public class ResponseRegisteredExpensiveJson
 {
     public string Title { get; set; }
 }
