@@ -120,6 +120,9 @@
   <data name="EXPENSE_MUST_BE_IN_THE_PAST" xml:space="preserve">
     <value>The expense must be in the past.</value>
   </data>
+  <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
+    <value>Expense not found.</value>
+  </data>
   <data name="PAYMENT_TYPE_DOES_NOT_EXIST" xml:space="preserve">
     <value>Payment Type does not exist.</value>
   </data>

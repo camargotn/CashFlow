@@ -120,6 +120,9 @@
   <data name="EXPENSE_MUST_BE_IN_THE_PAST" xml:space="preserve">
     <value>A despesa deve ser cadastrada no passado.</value>
   </data>
+  <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
+    <value>A despesa não foi encontrada.</value>
+  </data>
   <data name="PAYMENT_TYPE_DOES_NOT_EXIST" xml:space="preserve">
     <value>Tipo de Pagamento invalido.</value>
   </data>
