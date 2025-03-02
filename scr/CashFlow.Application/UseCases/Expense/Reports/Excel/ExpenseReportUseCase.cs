@@ -34,7 +34,7 @@ public class ExpenseReportUseCase : IExpenseReportUseCase
         workbook.Style.Font.FontName = "Calibri";
         workbook.Style.Font.FontSize = 12;
 
-        using var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
+        var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
 
         CreateHeader(worksheet);
 
