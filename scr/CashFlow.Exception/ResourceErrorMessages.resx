@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
+    <value>Email is already in use.</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>Email is invalid.</value>
+  </data>
+  <data name="EMAIL_REQUIRED" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
   <data name="EXPENSE_MUST_BE_IN_THE_PAST" xml:space="preserve">
     <value>The expense must be in the past.</value>
   </data>
   <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
     <value>Expense not found.</value>
+  </data>
+  <data name="NAME_REQUIRED" xml:space="preserve">
+    <value>The name is required.</value>
+  </data>
+  <data name="PASSWORD_INVALID" xml:space="preserve">
+    <value>The password must be greater than 8 caracters</value>
   </data>
   <data name="PAYMENT_TYPE_DOES_NOT_EXIST" xml:space="preserve">
     <value>Payment Type does not exist.</value>

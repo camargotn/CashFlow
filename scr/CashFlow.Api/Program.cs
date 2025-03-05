@@ -12,8 +12,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
-builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration); // Adiciona o serviço de dependencia da camada de infraestrutura
+builder.Services.AddApplication(); // Adiciona o serviço de dependencia da camada de aplicação
 
 var app = builder.Build();
 
