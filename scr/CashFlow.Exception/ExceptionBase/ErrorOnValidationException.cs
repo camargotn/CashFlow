@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CashFlow.Exception.ExceptionBase;
 public class ErrorOnValidationException : CashFlowException
