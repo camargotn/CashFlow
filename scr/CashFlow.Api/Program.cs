@@ -2,7 +2,9 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using CashFlow.Api.Filters;
 using CashFlow.Api.Middleware;
+using CashFlow.Api.Token;
 using CashFlow.Application;
+using CashFlow.Domain.Services.LoggedUser;
 using CashFlow.Infrastructure;
 using CashFlow.Infrastructure.Migrations;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -49,6 +51,9 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)))
 
 builder.Services.AddInfrastructure(builder.Configuration); // Adiciona o serviço de dependencia da camada de infraestrutura
 builder.Services.AddApplication(); // Adiciona o serviço de dependencia da camada de aplicação
+
+builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>(); // Adiciona serviço de dependencia do token
+builder.Services.AddHttpContextAccessor(); // Adiciona serviço de dependencia do HttpContextAccessor
 
 var signinKey = builder.Configuration.GetValue<string>("Settings:Jwt:SigningKey");
 

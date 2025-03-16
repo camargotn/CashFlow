@@ -22,14 +22,14 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
         return await _dbContext.Expenses.AsNoTracking().ToListAsync();
     }
 
-    async Task<Expense?> IExpensesReadOnlyRepository.GetExpenseById(long id)
+    async Task<Expense?> IExpensesReadOnlyRepository.GetExpenseById(User user, long id)
     {
-        return await _dbContext.Expenses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        return await _dbContext.Expenses.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
     }
     
-    async Task<Expense?> IExpensesUpdateOnlyRepository.GetExpenseById(long id)
+    async Task<Expense?> IExpensesUpdateOnlyRepository.GetExpenseById(User user, long id)
     {
-        return await _dbContext.Expenses.FirstOrDefaultAsync(x => x.Id == id);
+        return await _dbContext.Expenses.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
     }
 
     public async Task<bool> Delete(long id)

@@ -11,22 +11,27 @@ public class UpdateExpenseUseCase : IUpdateExpenseUseCase
     private readonly IExpensesUpdateOnlyRepository _repository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ILoggedUser _loggedUser;
     public UpdateExpenseUseCase(
         IExpensesUpdateOnlyRepository repository,
         IUnitOfWork unitOfWork,
-        IMapper mapper
+        IMapper mapper,
+        ILoggedUser loggedUser
         )
     {
         _repository = repository;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _loggedUser = loggedUser;
     }
 
     public async Task Execute(long id, RequestExpenseJson request)
     {
         Validate(request);
 
-        var expense = await _repository.GetExpenseById(id);
+        var loggedUser = await _loggedUser.Get();
+
+        var expense = await _repository.GetExpenseById(loggedUser, id);
 
         if (expense == null)
         {
