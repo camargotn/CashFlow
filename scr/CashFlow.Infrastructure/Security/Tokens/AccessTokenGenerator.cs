@@ -24,9 +24,8 @@ public class AccessTokenGenerator : IAccessTokenGenerator
             Subject = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, user.Role),
-                new Claim(ClaimTypes.NameIdentifier, user.UserIdentifier.ToString())
+                new Claim(ClaimTypes.Sid, user.UserIdentifier.ToString())
             }),
             Expires = DateTime.UtcNow.AddMinutes(_expirationTimeMinutes),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_signinKey)), SecurityAlgorithms.HmacSha256Signature)

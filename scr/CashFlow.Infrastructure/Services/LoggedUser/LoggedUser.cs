@@ -21,9 +21,9 @@ public class LoggedUser : ILoggedUser
 
         var tokenHandler = new JwtSecurityTokenHandler();
 
-        var jwtSecutiryToken = tokenHandler.ReadJwtToken(token);
+        var jwtSecurityToken = tokenHandler.ReadJwtToken(token);
 
-        var identifier = jwtSecutiryToken.Claims.First(claim => claim.Type == ClaimTypes.Sid).Value;
+        var identifier = jwtSecurityToken.Claims.First(claim => claim.Type == ClaimTypes.Sid).Value;
 
         return await _dbContext
             .Users
