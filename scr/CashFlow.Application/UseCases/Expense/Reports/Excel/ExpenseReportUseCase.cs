@@ -1,6 +1,7 @@
 ﻿using CashFlow.Domain.Enums;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
+using CashFlow.Domain.Services.LoggedUser;
 using ClosedXML.Excel;
 
 namespace CashFlow.Application.UseCases.Expense.Reports.Excel;
@@ -9,15 +10,22 @@ public class ExpenseReportUseCase : IExpenseReportUseCase
 {
     private const string CURRENCY_SYMBOL = "R$";
     private readonly IExpensesReadOnlyRepository _repository;
+    private readonly ILoggedUser _loggedUser;
 
-    public ExpenseReportUseCase(IExpensesReadOnlyRepository repository)
+    public ExpenseReportUseCase(
+        IExpensesReadOnlyRepository repository,
+        ILoggedUser loggedUser
+        )
     {
         _repository = repository;
+        _loggedUser = loggedUser;
     }
 
     public async Task<byte[]> Execute(DateOnly month)
     {
-        var expenses = await _repository.GetExpensesByMonth(month);
+        var loggedUser = await _loggedUser.Get();
+
+        var expenses = await _repository.GetExpensesByMonth(loggedUser, month);
 
         if (expenses.Count == 0)
         {
@@ -26,7 +34,7 @@ public class ExpenseReportUseCase : IExpenseReportUseCase
 
         var workbook = new XLWorkbook();
 
-        workbook.Author = "CashFlow";
+        workbook.Author = loggedUser.Name;
         workbook.Properties.Company = "CashFlow";
         workbook.Properties.Subject = "Expense Report";
         workbook.Properties.Title = "Expense Report";

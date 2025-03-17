@@ -17,9 +17,9 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
         await _dbContext.Expenses.AddAsync(expense);
     }
 
-    public async Task<List<Expense>> GetAllExpenses()
+    public async Task<List<Expense>> GetAllExpenses(User user)
     {
-        return await _dbContext.Expenses.AsNoTracking().ToListAsync();
+        return await _dbContext.Expenses.AsNoTracking().Where(expense => expense.UserId == user.Id).ToListAsync();
     }
 
     async Task<Expense?> IExpensesReadOnlyRepository.GetExpenseById(User user, long id)
@@ -32,17 +32,11 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
         return await _dbContext.Expenses.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
     }
 
-    public async Task<bool> Delete(long id)
+    public async Task Delete(long id)
     {
-        var result = await _dbContext.Expenses.FirstOrDefaultAsync(x => x.Id == id);
+        var result = await _dbContext.Expenses.FindAsync(id);
 
-        if (result is null)
-        {
-            return false;
-        }
-
-        _dbContext.Expenses.Remove(result);
-        return true;
+        _dbContext.Expenses.Remove(result!);
     }
 
     public void Update(Expense expense)
@@ -50,7 +44,7 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
         _dbContext.Update(expense);
     }
 
-    public async Task<List<Expense>> GetExpensesByMonth(DateOnly month)
+    public async Task<List<Expense>> GetExpensesByMonth(User user, DateOnly month)
     {
         var firstDayOfMonth = new DateTime(month.Year, month.Month, 1).Date;
         var firstDayNextMonth = firstDayOfMonth.AddMonths(1).Date;
@@ -58,7 +52,7 @@ internal class ExpensesRepository : IExpensesReadOnlyRepository, IExpensesWriteO
         return await _dbContext
             .Expenses
             .AsNoTracking()
-            .Where(expense => expense.DateTransaction < firstDayNextMonth && expense.DateTransaction >= firstDayOfMonth)
+            .Where(expense => expense.DateTransaction < firstDayNextMonth && expense.DateTransaction >= firstDayOfMonth && expense.UserId == user.Id)
             .OrderBy(expense => expense.DateTransaction)
             .ToListAsync();
     }
